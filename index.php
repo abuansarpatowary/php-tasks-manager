@@ -13,7 +13,7 @@
 
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 -->
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 <div class="overflow-x-auto">
   <h2 class="text-3xl py-8">Task Manager</h2>
   <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
@@ -30,16 +30,13 @@
 
         </td>
         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Name
+        Task Name
         </td>
         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Date of Birth
+          Date
         </td>
         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Role
-        </td>
-        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Salary
+          Tags
         </td>
       </tr>
     </thead>
@@ -56,11 +53,10 @@
           />
         </td>
         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          John Doe
+        Analyse the macro-location
         </td>
         <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
         <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Developer</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
         <td class="whitespace-nowrap px-4 py-2">
           <a
             href="#"
@@ -82,11 +78,10 @@
           />
         </td>
         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Jane Doe
+        Check if the correct SAM is assigned to the project
         </td>
         <td class="whitespace-nowrap px-4 py-2 text-gray-700">04/11/1980</td>
         <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Designer</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">$100,000</td>
         <td class="whitespace-nowrap px-4 py-2">
           <a
             href="#"
@@ -112,7 +107,6 @@
         </td>
         <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
         <td class="whitespace-nowrap px-4 py-2 text-gray-700">Singer</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">$20,000</td>
         <td class="whitespace-nowrap px-4 py-2">
           <a
             href="#"
@@ -127,23 +121,32 @@
   <!-- form -->
   <div class="pt-8">
     <h2>Add Task</h2>
-  <form action="#" class="space-y-4">
+  <form method="POST" action="tasks.php" class="space-y-4">
           <div>
-            <label class="sr-only" for="name">Name</label>
+            <label class="sr-only" for="taskname">Task Name</label>
             <input
               class="w-full rounded-lg border-2 border-gray-200 p-3 text-sm"
               placeholder="Tasks Details"
               type="text"
-              id="name"
+              id="taskname"
             />
           </div>
           <div>
-            <label class="sr-only" for="taskdate">Name</label>
+            <label class="sr-only" for="taskdate">Task Date</label>
             <input
               class="w-full rounded-lg border-2 border-gray-200 p-3 text-sm"
               placeholder="Tasks Date"
               type="date"
               id="taskdate"
+            />
+          </div>
+          <div class="mt-4">
+            <label class="sr-only" for="tasktags">Task Tags</label>
+            <input
+              class="w-full rounded-lg border-2 border-gray-200 p-3 text-sm"
+              placeholder="Tasks Tags"
+              type="text"
+              id="tasktags"
             />
           </div>
           <div class="mt-4">
