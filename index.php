@@ -129,6 +129,7 @@
               placeholder="Tasks Details"
               type="text"
               id="taskname"
+              name="taskname"
             />
           </div>
           <div>
@@ -138,6 +139,7 @@
               placeholder="Tasks Date"
               type="date"
               id="taskdate"
+              name="taskdate"
             />
           </div>
           <div class="mt-4">
@@ -147,6 +149,7 @@
               placeholder="Tasks Tags"
               type="text"
               id="tasktags"
+              name="tasktags"
             />
           </div>
           <div class="mt-4">
@@ -155,6 +158,9 @@
               value="Add Task"
               class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
             />
+          </div>
+          <div>
+            <input type="hidden" name="action" value="add">
           </div>
   </form>
 </div>
