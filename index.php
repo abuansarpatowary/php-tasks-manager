@@ -1,3 +1,12 @@
+<?php
+    include_once 'config.php';
+    $connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    if(!$connection) {
+        throw new Exception( "Cannot connect to database" );
+    }
+    $query = "SELECT * FROM " . DB_TABLE;
+    $result = mysqli_query($connection, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +25,13 @@
 <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 <div class="overflow-x-auto">
   <h2 class="text-3xl py-8">Task Manager</h2>
+  <?Php 
+    if(mysqli_num_rows($result) == 0){
+      ?>
+      <p>No Data Found</p>
+      <?php
+    }else{
+  ?>
   <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
     <thead>
       <tr>
@@ -42,6 +58,9 @@
     </thead>
 
     <tbody class="divide-y divide-gray-200">
+      <?php 
+        while($data = mysqli_fetch_assoc($result)){
+      ?>
       <tr>
         <td class="sticky inset-y-0 start-0 bg-white px-4 py-2">
           <label class="sr-only" for="Row1">Row 1</label>
@@ -53,10 +72,10 @@
           />
         </td>
         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-        Analyse the macro-location
+        <?php echo $data['taskname'] ?>
         </td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Developer</td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $data['taskdate'] ?></td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $data['tasktags'] ?></td>
         <td class="whitespace-nowrap px-4 py-2">
           <a
             href="#"
@@ -66,8 +85,8 @@
           </a>
         </td>
       </tr>
-
-      <tr>
+<?php }?>
+    <!--   <tr>
         <td class="sticky inset-y-0 start-0 bg-white px-4 py-2">
           <label class="sr-only" for="Row2">Row 2</label>
 
@@ -90,9 +109,9 @@
             Edit
           </a>
         </td>
-      </tr>
+      </tr> -->
 
-      <tr>
+      <!-- <tr>
         <td class="sticky inset-y-0 start-0 bg-white px-4 py-2">
           <label class="sr-only" for="Row3">Row 3</label>
 
@@ -115,9 +134,12 @@
             Edit
           </a>
         </td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
+  <?php
+    }
+  ?>
   <!-- form -->
   <div class="pt-8">
     <h2>Add Task</h2>
