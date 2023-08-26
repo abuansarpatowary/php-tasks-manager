@@ -78,63 +78,13 @@
         <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $data['tasktags'] ?></td>
         <td class="whitespace-nowrap px-4 py-2">
           <a
-            href="#"
-            class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-          >
-            Edit
+            href="edit_task.php?id=<?php echo $data['id'] ?>"
+            class="inline-block rounded bg-black px-4 py-2 text-xs font-medium text-white hover:bg-black"
+          >Edit
           </a>
         </td>
       </tr>
 <?php }?>
-    <!--   <tr>
-        <td class="sticky inset-y-0 start-0 bg-white px-4 py-2">
-          <label class="sr-only" for="Row2">Row 2</label>
-
-          <input
-            class="h-5 w-5 rounded border-gray-300"
-            type="checkbox"
-            id="Row2"
-          />
-        </td>
-        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-        Check if the correct SAM is assigned to the project
-        </td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">04/11/1980</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Designer</td>
-        <td class="whitespace-nowrap px-4 py-2">
-          <a
-            href="#"
-            class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-          >
-            Edit
-          </a>
-        </td>
-      </tr> -->
-
-      <!-- <tr>
-        <td class="sticky inset-y-0 start-0 bg-white px-4 py-2">
-          <label class="sr-only" for="Row3">Row 3</label>
-
-          <input
-            class="h-5 w-5 rounded border-gray-300"
-            type="checkbox"
-            id="Row3"
-          />
-        </td>
-        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-          Gary Barlow
-        </td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700">Singer</td>
-        <td class="whitespace-nowrap px-4 py-2">
-          <a
-            href="#"
-            class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-          >
-            Edit
-          </a>
-        </td>
-      </tr> -->
     </tbody>
   </table>
   <?php
@@ -143,7 +93,7 @@
   <!-- form -->
   <div class="pt-8">
     <h2>Add Task</h2>
-  <form method="POST" action="tasks.php" class="space-y-4">
+  <form method="POST" action="tasks.php?id=<?php echo $data['id'] ?>" class="space-y-4">
           <div>
             <label class="sr-only" for="taskname">Task Name</label>
             <input
@@ -164,6 +114,7 @@
               name="taskdate"
             />
           </div>
+          
           <div class="mt-4">
             <label class="sr-only" for="tasktags">Task Tags</label>
             <input
@@ -190,7 +141,7 @@
 </div>
 <script>
 function toggleSelectAll() {
-  const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const selectAllCheckbox = document.getElementById('SelectAll');
 
   for (const checkbox of checkboxes) {
