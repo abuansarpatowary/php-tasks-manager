@@ -10,8 +10,7 @@
         $taskdate = $_POST['taskdate'];
         $tasktags = $_POST['tasktags'];
         if($taskname && $taskdate && $tasktags){
-            /* $sql = "INSERT INTO" .DB_TABLE. "(taskname, taskdate, tasktags) VALUES ('{$taskname}', '{$taskdate}', '{$tasktags}')"; */
-            $sql = "INSERT INTO tasks (taskname, taskdate, tasktags) VALUES ('{$taskname}', '{$taskdate}', '{$tasktags}')";
+            $sql = "INSERT INTO ". DB_TABLE ." (taskname, taskdate, tasktags) VALUES ('{$taskname}', '{$taskdate}', '{$tasktags}')";
             $result = mysqli_query($connection, $sql);
             if($result){
                 echo $result;
