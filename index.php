@@ -16,12 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
 </head>
 <body>
-
-<!--
-  Heads up! 👋
-
-  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
--->
 <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 <div class="overflow-x-auto">
   <h2 class="text-3xl py-8">Task Manager</h2>
@@ -43,7 +37,6 @@
             onclick="toggleSelectAll()"
           />
           <label for="SelectAll">Select All</label>
-
         </td>
         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
         Task Name
@@ -80,8 +73,9 @@
           <a
             href="edit_task.php?id=<?php echo $data['id'] ?>"
             class="inline-block rounded bg-black px-4 py-2 text-xs font-medium text-white hover:bg-black"
-          >Edit
+          >Edit ✏️
           </a>
+            <a href="delete_task.php?id=<?php echo $data['id'] ?>" class="inline-block rounded bg-black px-4 py-2 text-xs font-medium text-white hover:bg-black">Delete <span class="rotate-60" onclick="confirm('Are you sure you want to delete this task?')">❌</span></a>
         </td>
       </tr>
 <?php }?>
@@ -93,7 +87,7 @@
   <!-- form -->
   <div class="pt-8">
     <h2>Add Task</h2>
-  <form method="POST" action="tasks.php?id=<?php echo $data['id'] ?>" class="space-y-4">
+  <form method="POST" action="tasks.php" class="space-y-4">
           <div>
             <label class="sr-only" for="taskname">Task Name</label>
             <input
