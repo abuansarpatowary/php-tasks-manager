@@ -14,33 +14,48 @@
 <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-lg text-center">
     <h1 class="text-2xl font-bold sm:text-3xl">Get started today!</h1>
-    <p class="mt-4 text-gray-500">TaskMaster is your productivity partner, simplifying task management for work and life. Prioritize, track, and conquer tasks seamlessly. Boost efficiency, meet deadlines, and achieve your goals effortlessly. Embrace organized success today.</p>
+    <p class="mt-4 text-gray-500">TaskMaster is your productivity partner, simplifying task management for work and life. Prioritize, track, and conquer tasks seamlessly.</p>
   </div>
 
-  <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+  <form method="POST" action="tasks.php" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
     <div>
       <label for="email" class="sr-only">Email</label>
       <div class="relative">
-        <input type="email" class="w-full rounded-lg border border-gray-400 p-4 pe-12 text-sm shadow-sm" placeholder="Enter email"/>
+        <input type="email" class="w-full rounded-lg border border-gray-400 p-4 pe-12 text-sm shadow-sm" placeholder="Enter email" name="email"/>
       </div>
     </div>
 
     <div>
       <label for="password" class="sr-only">Password</label>
       <div class="relative">
-        <input type="password" class="w-full rounded-lg border border-gray-400 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password"/>
+        <input type="password" class="w-full rounded-lg border border-gray-400 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password" name="password"/>
       </div>
     </div>
 
     <div class="flex items-center justify-between">
       <p class="text-sm text-gray-500">
         No account?
-        <a class="underline" href="">Sign up</a>
+        <a id="signupButton" class="underline" href="">Sign up</a>
       </p>
+      <?php if (!empty($errorMessage)) : ?>
+            <p class="text-red-500 text-xs mt-1"><?php echo $errorMessage; ?></p>
+        <?php endif; ?>
 
-      <input type="submit" value="Login"class="inline-block rounded-lg bg-black px-5 py-3 text-sm font-medium text-white cursor-pointer hover:bg-blue-600 transition">
+      <input id="loginButton" type="submit" value="Login"class="inline-block rounded-lg bg-black px-5 py-3 text-sm font-medium text-white cursor-pointer hover:bg-blue-600 transition">
+      <input id="actionField" type="hidden" name="action" value="login">
     </div>
   </form>
 </div>
+<script>
+  const loginButton = document.getElementById('loginButton');
+  const actionField = document.getElementById('actionField');
+  const signupButton = document.getElementById('signupButton');
+  signupButton.addEventListener('click', function(e){
+    e.preventDefault();
+    actionField.value = 'register';
+    loginButton.value = 'Register';
+    signupButton.style.display = 'none';
+  });
+</script>
 </body>
 </html>
