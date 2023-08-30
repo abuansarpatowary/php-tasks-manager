@@ -1,4 +1,10 @@
 <?php
+    session_start();
+    $user_id = $_SESSION['id'] ?? 0;
+    if(!$user_id){
+        header('Location: login.php');
+        return;
+    }
     include_once 'config.php';
     $connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if(!$connection) {

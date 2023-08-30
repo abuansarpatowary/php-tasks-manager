@@ -1,5 +1,12 @@
 <?php 
 include_once 'function.php';
+session_start();
+$user_id = $_SESSION['id'] ?? 0;
+if($user_id){
+    header('Location: index.php');
+    return;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +63,7 @@ include_once 'function.php';
         <?php
     }
     ?>
-    
+
     <div class="flex items-center justify-between">
       <p class="text-sm text-gray-500">
         No account?
