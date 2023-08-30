@@ -1,5 +1,5 @@
 <?php 
-
+include_once 'function.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,15 +32,36 @@
       </div>
     </div>
 
+    <?php 
+    $status = $_GET['status'] ?? 0;
+    if ($status) {
+        ?>
+        <div>
+        <?php 
+        if($status == 5){
+            ?>
+            <p class="text-sm text-green-500">
+                <?php echo getStatusMessage($status); ?>
+            </p>
+            <?php
+        }else{ 
+            ?>
+            <p class="text-sm text-red-500">
+                <?php echo getStatusMessage($status); ?>
+            </p>
+            <?php
+        }
+        ?>
+        </div>
+        <?php
+    }
+    ?>
+    
     <div class="flex items-center justify-between">
       <p class="text-sm text-gray-500">
         No account?
         <a id="signupButton" class="underline" href="">Sign up</a>
       </p>
-      <?php if (!empty($errorMessage)) : ?>
-            <p class="text-red-500 text-xs mt-1"><?php echo $errorMessage; ?></p>
-        <?php endif; ?>
-
       <input id="loginButton" type="submit" value="Login"class="inline-block rounded-lg bg-black px-5 py-3 text-sm font-medium text-white cursor-pointer hover:bg-blue-600 transition">
       <input id="actionField" type="hidden" name="action" value="login">
     </div>
