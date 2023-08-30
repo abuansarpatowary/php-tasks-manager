@@ -71,8 +71,9 @@
             $statusCode = 1;
         }
 }else{
-    $statusCode = 2;
-}
+        $statusCode = 2;
+    }
 }
     header('Location: login.php?status='.$statusCode);
 }
+mysqli_close($connection);
