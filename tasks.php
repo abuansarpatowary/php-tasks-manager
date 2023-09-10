@@ -11,8 +11,9 @@
         $taskname = $_POST['taskname'];
         $taskdate = $_POST['taskdate'];
         $tasktags = $_POST['tasktags'];
-        if($taskname && $taskdate && $tasktags){
-            $sql = "INSERT INTO ". DB_TABLE ." (taskname, taskdate, tasktags) VALUES ('{$taskname}', '{$taskdate}', '{$tasktags}')";
+        $user_id = $_SESSION['id']?? 0;
+        if($taskname && $taskdate && $tasktags && $user_id){
+            $sql = "INSERT INTO ". DB_TABLE ." (taskname, taskdate, tasktags, user_id) VALUES ('{$taskname}', '{$taskdate}', '{$tasktags}', '{$user_id}')";
             $result = mysqli_query($connection, $sql);
             if($result){
                 echo $result;
