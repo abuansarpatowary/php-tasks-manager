@@ -16,6 +16,8 @@
     }else{
         $query = "SELECT * FROM  " . DB_TABLE . " WHERE user_id = {$user_id}";
     }
+    // query for get users data
+    $query = "SELECT * FROM  users WHERE id = {$user_id}";
     $result = mysqli_query($connection, $query);
 ?>
 <!DOCTYPE html>
@@ -53,13 +55,17 @@
                 <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
               </button>
             </div>
+
+            <?php 
+                while($userdata = mysqli_fetch_assoc($result)){
+              ?>
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
               <div class="px-4 py-3" role="none">
                 <p class="text-sm text-gray-900 dark:text-white" role="none">
                   John Doe
                 </p>
                 <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                  john.doe@gmail.com
+                  <?php echo $userdata['email'] ?>
                 </p>
               </div>
               <ul class="py-1" role="none">
@@ -74,8 +80,13 @@
                 </li>
               </ul>
             </div>
+            <?php
+              }
+            ?>
+
           </div>
         </div>
+
     </div>
   </div>
 </nav>
