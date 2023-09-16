@@ -10,7 +10,12 @@
     if(!$connection) {
         throw new Exception( "Cannot connect to database" );
     }
-    $query = "SELECT * FROM  " . DB_TABLE . " WHERE user_id = {$user_id}";
+    $search = $_GET['search'] ?? '';
+    if($search){
+        $query = "SELECT * FROM  " . DB_TABLE . " WHERE user_id = {$user_id} AND taskname LIKE '%{$search}%'";
+    }else{
+        $query = "SELECT * FROM  " . DB_TABLE . " WHERE user_id = {$user_id}";
+    }
     $result = mysqli_query($connection, $query);
 ?>
 <!DOCTYPE html>
@@ -39,6 +44,7 @@
           <span class="font-bold">Task Master</span>
         </a>
       </div>
+
       <div class="flex items-center">
           <div class="flex items-center ml-3">
             <div>
@@ -153,14 +159,35 @@
           </div>
   </form>
 </div>
-  <h2 class="text-3xl py-2">Task Manager</h2>
-  <?Php 
-    if(mysqli_num_rows($result) == 0){
-      ?>
-      <p>No Data Found</p>
-      <?php
-    }else{
-  ?>
+<div class="flex justify-between mt-7 pb-8">
+    <div>
+    <h2 class="text-3xl py-2">Task Manager</h2>
+    <?Php 
+      if(mysqli_num_rows($result) == 0){
+        ?>
+        <p>No Data Found</p>
+        <?php
+      }else{
+    ?>
+    </div>
+    <div>
+      <form class="flex items-end">   
+        <label for="simple-search" class="sr-only">Search</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Dask</title><path d="m11.246 9.754 5.848-3.374a.202.202 0 0 0 .1-.175l.002-2.553c0-.324-.133-.645-.392-.841a1 1 0 0 0-1.118-.074l-2.425 1.4-6.436 3.712a1.007 1.007 0 0 0-.504.872l-.003 8.721v2.825c0 .324.132.645.39.842.335.253.766.278 1.12.074l2.363-1.364a.202.202 0 0 0 .101-.175l.003-8.244a1.902 1.902 0 0 1 .951-1.646Zm10.316-4.336a1.005 1.005 0 0 0-.504-.137.997.997 0 0 0-.503.137l-8.86 5.112a1.01 1.01 0 0 0-.505.87l-.003 11.591c0 .364.188.69.503.872a.995.995 0 0 0 1.007 0l8.86-5.112a1.01 1.01 0 0 0 .504-.872l.004-11.59a.997.997 0 0 0-.503-.871ZM6.378 7.074l6.334-3.655a.202.202 0 0 0 .1-.175l.001-2.193c0-.324-.133-.646-.392-.84a1 1 0 0 0-1.118-.075L2.443 5.25a1.007 1.007 0 0 0-.504.872l-.003 11.546c0 .324.133.645.39.842a1 1 0 0 0 1.12.074l1.877-1.082a.202.202 0 0 0 .1-.175l.003-8.605c0-.68.363-1.307.952-1.647z"></path></svg>
+            </div>
+            <input type="text" name="search" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Task" required>
+        </div>
+        <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+            <span class="sr-only">Search</span>
+        </button>
+    </form>
+    </div>
+  </div>
   <div class="overflow-x-auto">
   <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
     <thead>
