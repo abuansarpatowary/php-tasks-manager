@@ -26,15 +26,29 @@
             echo "Please fill all the fields";
         }
     } else if ('register' == $action) {
+        $name = $_POST['username'] ?? '';
         $username = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
+        $profile = $_FILES['profile'] ?? '';
     
-        if ($username && $password) {
+        if ($name && $username && $password && $profile) {
             $hashPassword = password_hash($password, PASSWORD_BCRYPT);
-            $query = "INSERT INTO users (email, password) VALUES ('{$username}', '{$hashPassword}')";
+
+            $profileName = explode('.', $profile['name']);
+            $profileExtension = strtolower(end($profileName));
+            
+            $uniqueProfileName = uniqid('profile_',true) . '.' . $profileExtension;
+            $uploadProfile = move_uploaded_file($profile['tmp_name'], 'assets/img/profile/'. $uniqueProfileName);
+
+            if (!$uploadProfile) {
+                $statusCode = 6;
+            }else{
+                $userquery = "INSERT INTO `users` (`name`, `email`, `password`,`profile`) VALUES ('{$name}', '{$username}', '{$hashPassword}', '{$uniqueProfileName}')";
+            }
     
             try {
-                $result = mysqli_query($connection, $query);
+                $result = mysqli_query($connection, $userquery);
+                var_dump($result);
                 
                 if ($result) {
                     $statusCode = 5;
