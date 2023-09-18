@@ -36,7 +36,7 @@
   <div class="px-3 py-3 lg:px-5 lg:pl-3">
     <div class="flex items-center justify-between">
       <div class="flex items-center justify-start">
-        <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+        <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
             <span class="sr-only">Open sidebar</span>
             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
@@ -74,7 +74,7 @@
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
                 </li>
                 <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
+                  <a href="task.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
                 </li>
                 <li>
                   <a href="logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
@@ -105,9 +105,17 @@
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group menu-item">
             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Dask</title><path d="m11.246 9.754 5.848-3.374a.202.202 0 0 0 .1-.175l.002-2.553c0-.324-.133-.645-.392-.841a1 1 0 0 0-1.118-.074l-2.425 1.4-6.436 3.712a1.007 1.007 0 0 0-.504.872l-.003 8.721v2.825c0 .324.132.645.39.842.335.253.766.278 1.12.074l2.363-1.364a.202.202 0 0 0 .101-.175l.003-8.244a1.902 1.902 0 0 1 .951-1.646Zm10.316-4.336a1.005 1.005 0 0 0-.504-.137.997.997 0 0 0-.503.137l-8.86 5.112a1.01 1.01 0 0 0-.505.87l-.003 11.591c0 .364.188.69.503.872a.995.995 0 0 0 1.007 0l8.86-5.112a1.01 1.01 0 0 0 .504-.872l.004-11.59a.997.997 0 0 0-.503-.871ZM6.378 7.074l6.334-3.655a.202.202 0 0 0 .1-.175l.001-2.193c0-.324-.133-.646-.392-.84a1 1 0 0 0-1.118-.075L2.443 5.25a1.007 1.007 0 0 0-.504.872l-.003 11.546c0 .324.133.645.39.842a1 1 0 0 0 1.12.074l1.877-1.082a.202.202 0 0 0 .1-.175l.003-8.605c0-.68.363-1.307.952-1.647z"/></svg>
                <span class="flex-1 ml-3 whitespace-nowrap">Tasks</span>
+            </a>
+         </li>
+         <li>
+            <a href="tasks.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group menu-item">
+               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+               </svg>
+               <span class="flex-1 ml-3 whitespace-nowrap">User</span>
             </a>
          </li>
          <li>
@@ -124,6 +132,8 @@
    </div>
 </aside>
 <div class="mx-auto mt-12 max-w-6xl px-4 md:px-6 lg:px-8">
+
+<div id="task-wrapper">
   <!-- form -->
   <div class="pt-8">
     <h2 class="text-3xl mb-2">Add Task</h2>
@@ -261,6 +271,71 @@
     }
   ?>
 </div>
+<!-- user-edit -->
+<div id="edit-profile" class="pt-8 hidden">
+  <div class="user-edit__inner">
+    <div class="user-edit__header">
+      <h2 class="text-3xl mb-2">Edit User</h2>
+    </div>
+    <div class="user-edit__body">
+      <form method="POST" action="tasks.php" class="space-y-4">
+        <div>
+          <label class="sr-only" for="name">Name</label>
+          <input
+            class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+            placeholder="Name"
+            type="text"
+            id="name"
+            name="name"
+          />
+        </div>
+        <div>
+          <label class="sr-only" for="email">Email</label>
+          <input
+            class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+            placeholder="Email"
+            type="email"
+            id="email"
+            name="email"
+          />
+        </div>
+        <div>
+          <label class="sr-only" for="password">Password</label>
+          <input
+            class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+            placeholder="Password"
+            type="password"
+            id="password"
+            name="password"
+          />
+        </div>
+        <div>
+          <label class="sr-only" for="profile">Profile</label>
+          <input
+            class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+            placeholder="Profile"
+            type="file"
+            id="profile"
+            name="profile"
+          />
+        </div>
+        <div class="mt-4 bg-[#050708] inline-block rounded-lg">
+          <input
+            type="submit"
+            value="Update"
+            class="w-full px-5 py-3 font-medium text-white sm:w-auto cursor-pointer"
+          />
+        </div>
+        <div>
+          <input type="hidden" name="action" value="update">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"  type="text/javascript"></script>
 <script>
 function toggleSelectAll() {
@@ -271,6 +346,25 @@ function toggleSelectAll() {
     checkbox.checked = selectAllCheckbox.checked;
   }
 }
+// toggle to all-task and edit-profile
+const menuItems = document.querySelectorAll('.menu-item');
+const taskWrapper = document.getElementById('task-wrapper');
+const editProfile = document.getElementById('edit-profile');
+menuItems.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = item.dataset.target;
+    if (target === 'task-wrapper') {
+      taskWrapper.classList.remove('hidden');
+      editProfile.classList.add('hidden');
+    } else {
+      taskWrapper.classList.add('hidden');
+      editProfile.classList.remove('hidden');
+    }
+  });
+});
+
+
 </script>
 </body>
 </html>
