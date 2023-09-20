@@ -111,7 +111,7 @@
             </a>
          </li>
          <li>
-            <a href="tasks.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group menu-item" data-target="edit-profile">
+            <a href="tasks.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group menu-item">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                   <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                </svg>
@@ -184,14 +184,15 @@
 <div class="flex justify-between mt-7 pb-8">
     <div>
     <h2 class="text-3xl py-2">Task Manager</h2>
-    <?Php 
+    
+    </div>
+    <?php 
       if(mysqli_num_rows($result) == 0){
         ?>
         <p>No Data Found</p>
         <?php
       }else{
     ?>
-    </div>
     <div>
       <form class="flex items-end">   
         <label for="simple-search" class="sr-only">Search</label>
@@ -234,11 +235,11 @@
         </td>
       </tr>
     </thead>
-
-    <tbody class="divide-y divide-gray-200">
-      <?php 
+    
+    <?php 
         while($data = mysqli_fetch_assoc($result)){
-      ?>
+    ?>
+    <tbody class="divide-y divide-gray-200">
       <tr>
         <td class="sticky inset-y-0 start-0 bg-white px-4 py-2">
           <label class="sr-only" for="Row1">Row 1</label>
@@ -263,13 +264,13 @@
             <a href="delete_task.php?id=<?php echo $data['id'] ?>" class="inline-block rounded bg-black px-4 py-2 text-xs font-medium text-white hover:bg-black">Delete <span class="rotate-60" onclick="confirm('Are you sure you want to delete this task?')">❌</span></a>
         </td>
       </tr>
-<?php }?>
     </tbody>
+<?php }?>
   </table>
+        <?php
+          }
+        ?>
         </div>
-  <?php
-    }
-  ?>
 </div>
 <!-- user-edit -->
 <div id="edit-profile" class="pt-8 hidden">
@@ -279,6 +280,19 @@
     </div>
     <div class="user-edit__body">
       <form method="POST" action="tasks.php" class="space-y-4">
+        <div>
+            <!-- center user profile -->
+          <div class="flex items-center justify-center">
+            <div class="flex-shrink-0 mr-3">
+              <img class="w-20 h-20 rounded-full" src="assets/img/profile/3993939" alt="user photo">
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-medium text-gray-900">hello</h3>
+              <p class="text-sm font-medium text-gray-500">hello paragraph</p>
+            </div>
+                </div>
+        </div>
+
         <div>
           <label class="sr-only" for="name">Name</label>
           <input
