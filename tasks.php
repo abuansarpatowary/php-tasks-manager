@@ -88,6 +88,26 @@
 }else{
         $statusCode = 2;
     }
+}else if('update_profile'==$action){
+   if(isset($_POST['update_user'])){
+    $name = $_POST['username'] ?? '';
+    $username = $_POST['email'] ?? '';
+    $profile = $_FILES['profile'] ?? '';
+
+    if($name && $username){
+        $query = "UPDATE users SET name = '{$name}', email = '{$username}'";
+        $updated_user = mysqli_query($connection, $query);
+        if($updated_user){
+            $statusCode = 5;
+        }else{
+            $statusCode = 6;
+        }
+    }else{
+        $statusCode = 2;
+    }
+   }
+
+    
 }
     header('Location: login.php?status='.$statusCode);
 }

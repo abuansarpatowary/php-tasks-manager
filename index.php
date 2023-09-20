@@ -57,7 +57,12 @@
             <div>
               <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                 <span class="sr-only">Open user menu</span>
+                <!-- if not profile image then show default image -->
+                <?php if(!$userdata['profile']){ ?>
+                  <img class="w-8 h-8 rounded-full" src="assets/img/default.svg" alt="user photo">
+                <?php }else{ ?>
                 <img class="w-8 h-8 rounded-full" src="assets/img/profile/<?php echo $userdata['profile'] ?>" alt="user photo">
+                <?php } ?>
               </button>
             </div>
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
@@ -81,9 +86,6 @@
                 </li>
               </ul>
             </div>
-            <?php
-              }
-            ?>
 
           </div>
         </div>
@@ -278,70 +280,57 @@
     <div class="user-edit__header">
       <h2 class="text-3xl mb-2">Edit User</h2>
     </div>
+        <div>
     <div class="user-edit__body">
       <form method="POST" action="tasks.php" class="space-y-4">
-        <div>
             <!-- center user profile -->
-          <div class="flex items-center justify-center">
-            <div class="flex-shrink-0 mr-3">
-              <img class="w-20 h-20 rounded-full" src="assets/img/profile/3993939" alt="user photo">
-            </div>
-            <div class="flex-1">
-              <h3 class="text-2xl font-medium text-gray-900">hello</h3>
-              <p class="text-sm font-medium text-gray-500">hello paragraph</p>
-            </div>
-                </div>
-        </div>
+            <label for="">Profile</label>
+          <div class="flex items-center justify-center relative">
+              <!-- if does not have an image -->
+              <?php 
+                if(!$userdata['profile']){
+                  ?>
+                  <img class="w-28 h-28 rounded-full" src="assets/img/default.svg" alt="user photo">
+                  <?php
+                }else{
+              ?>
+              <img class="w-28 h-28 rounded-full" src="assets/img/profile/<?php echo $userdata['profile'] ?>" alt="user photo">
+              <?php }?>
+              <svg class="absolute bottom-0 left-3/4 w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 16C13.6569 16 15 14.6569 15 13C15 11.3431 13.6569 10 12 10C10.3431 10 9 11.3431 9 13C9 14.6569 10.3431 16 12 16Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 16.8V9.2C3 8.0799 3 7.51984 3.21799 7.09202C3.40973 6.71569 3.71569 6.40973 4.09202 6.21799C4.51984 6 5.0799 6 6.2 6H7.25464C7.37758 6 7.43905 6 7.49576 5.9935C7.79166 5.95961 8.05705 5.79559 8.21969 5.54609C8.25086 5.49827 8.27836 5.44328 8.33333 5.33333C8.44329 5.11342 8.49827 5.00346 8.56062 4.90782C8.8859 4.40882 9.41668 4.08078 10.0085 4.01299C10.1219 4 10.2448 4 10.4907 4H13.5093C13.7552 4 13.8781 4 13.9915 4.01299C14.5833 4.08078 15.1141 4.40882 15.4394 4.90782C15.5017 5.00345 15.5567 5.11345 15.6667 5.33333C15.7216 5.44329 15.7491 5.49827 15.7803 5.54609C15.943 5.79559 16.2083 5.95961 16.5042 5.9935C16.561 6 16.6224 6 16.7454 6H17.8C18.9201 6 19.4802 6 19.908 6.21799C20.2843 6.40973 20.5903 6.71569 20.782 7.09202C21 7.51984 21 8.0799 21 9.2V16.8C21 17.9201 21 18.4802 20.782 18.908C20.5903 19.2843 20.2843 19.5903 19.908 19.782C19.4802 20 18.9201 20 17.8 20H6.2C5.0799 20 4.51984 20 4.09202 19.782C3.71569 19.5903 3.40973 19.2843 3.21799 18.908C3 18.4802 3 17.9201 3 16.8Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+          </div>
 
         <div>
-          <label class="sr-only" for="name">Name</label>
+          <label class="mb-2" for="name">Name</label>
           <input
             class="w-full rounded-lg border border-gray-200 p-3 text-sm"
             placeholder="Name"
             type="text"
             id="name"
             name="name"
+            value="<?php echo $userdata['name'] ?>"
           />
         </div>
         <div>
-          <label class="sr-only" for="email">Email</label>
+          <label class="mb-2" for="email">Email</label>
           <input
             class="w-full rounded-lg border border-gray-200 p-3 text-sm"
             placeholder="Email"
             type="email"
             id="email"
             name="email"
+            value="<?php echo $userdata['email'] ?>"
           />
         </div>
-        <div>
-          <label class="sr-only" for="password">Password</label>
-          <input
-            class="w-full rounded-lg border border-gray-200 p-3 text-sm"
-            placeholder="Password"
-            type="password"
-            id="password"
-            name="password"
-          />
-        </div>
-        <div>
-          <label class="sr-only" for="profile">Profile</label>
-          <input
-            class="w-full rounded-lg border border-gray-200 p-3 text-sm"
-            placeholder="Profile"
-            type="file"
-            id="profile"
-            name="profile"
-          />
-        </div>
-        <div class="mt-4 bg-[#050708] inline-block rounded-lg">
+        <div class="mt-4 bg-black inline-block rounded-lg">
           <input
             type="submit"
             value="Update"
             class="w-full px-5 py-3 font-medium text-white sm:w-auto cursor-pointer"
+            name="update_user"
           />
         </div>
         <div>
-          <input type="hidden" name="action" value="update">
+          <input type="hidden" name="action" value="update_profile">
         </div>
       </form>
     </div>
@@ -349,6 +338,10 @@
 </div>
 
 </div>
+
+<?php
+              }
+            ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"  type="text/javascript"></script>
 <script>
